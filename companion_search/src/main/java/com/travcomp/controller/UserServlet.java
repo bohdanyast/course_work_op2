@@ -64,10 +64,6 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        if (user == null) {
-            resp.sendRedirect("login.jsp");
-            return;
-        }
 
         List<Trip> userTrips = tripDao.findTripsByUser(user);
         req.setAttribute("user", user);
